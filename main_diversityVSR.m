@@ -20,7 +20,7 @@ rec_size_all = 2:10;
 rec_opt_diversity = zeros(K,length(rec_size_all));
 rec_Hete_div = zeros(K,length(rec_size_all));
 rec_Homo_div = zeros(K,length(rec_size_all));
-NumberIter = 100;
+NumberIter = 2000;
 bar_C = round(meansize_content*N*0.5); % size of caching entity
 for fa = 1:length(rec_size_all)   
     R = rec_size_all(fa)*ones(1,K); % maximum recommendation size
@@ -68,8 +68,8 @@ for fa = 1:length(rec_size_all)
             rec_Homo_div(k,fa) = rec_Homo_div(k,fa)+diversity(rec_k_homo);
             rec_Hete_div(k,fa) = rec_Hete_div(k,fa)+diversity(rec_k_hete);
         end       
-        disp(it)
-        disp(fa)
+        it
+        fa
     end    
     rec_opt_diversity(:,fa) = rec_opt_diversity(:,fa)/NumberIter;
     rec_Homo_div(:,fa) = rec_Homo_div(:,fa)/NumberIter;
